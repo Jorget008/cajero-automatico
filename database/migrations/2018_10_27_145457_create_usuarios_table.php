@@ -18,6 +18,7 @@ class CreateUsuariosTable extends Migration
             $table->string('usuario');
             $table->string('contrasenia');
             $table->string('nombre');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
