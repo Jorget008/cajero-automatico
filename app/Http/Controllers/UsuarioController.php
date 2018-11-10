@@ -54,7 +54,6 @@ class UsuarioController extends Controller
         $usuario->nombre=$request->nombre;
         $usuario->contrasenia= Hash::make($request->password);
         $usuario->save();
-
         $credentials = $request->only('usuario', 'password');
         if (Auth::attempt($credentials)) {
             // Authentication passed...

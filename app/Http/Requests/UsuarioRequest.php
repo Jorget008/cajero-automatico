@@ -35,7 +35,7 @@ class UsuarioRequest extends FormRequest
         return [
             'nombre.required' => 'El nombre de usuario es obligatorio',
             //'email.email'  => 'El correo electrónico debe ser una dirección de correo electrónico válida',
-            'usuario.max'  => 'El correo electrónico no debe superar los 255 caracteres',
+            'usuario.max'  => 'El usuario no debe superar los 255 caracteres',
             'usuario.unique'  => 'El usuario ya existe en la base de datos.',
 
             'password.required'  => 'La contraseña es obligatoria',
