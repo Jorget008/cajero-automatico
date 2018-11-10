@@ -16,11 +16,11 @@ class CreateCuentasTable extends Migration
         Schema::create('cuentas', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->unsignedInteger('id_tipo_cuenta');
-            $table->foreign('id_tipo_cuenta')->references('id')->on('tipo_cuentas');
+            $table->unsignedInteger('tipo_cuenta_id');
+            $table->foreign('tipo_cuenta_id')->references('id')->on('tipo_cuentas');
 
-            $table->unsignedInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->unsignedInteger('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
 
             $table->integer('saldo');
             $table->timestamps();

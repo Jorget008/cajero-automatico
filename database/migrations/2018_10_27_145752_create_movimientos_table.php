@@ -17,8 +17,8 @@ class CreateMovimientosTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('id_transaccion');
             $table->foreign('id_transaccion')->references('id')->on('transacciones');
-            $table->unsignedInteger('id_usuario');
-            $table->foreign('id_usuario')->references('id')->on('usuarios');
+            $table->unsignedInteger('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('usuarios');
             $table->timestamps();
         });
     }

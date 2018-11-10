@@ -4,7 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class usuario extends Model
+class Usuario extends Model
 {
     //
+    public function getAuthPassword(){
+        return $this->contrasenia;
+    }
+    public function Cuenta(){
+        $this->belongsTo("App\Cuenta");
+    }
 }

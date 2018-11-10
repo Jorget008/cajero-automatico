@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/cajero';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -40,9 +40,5 @@ class LoginController extends Controller
     public function username()
     {
         return 'usuario';
-    }
-    protected function getFailedLoginMessage()
-    {
-        return 'Estas credenciales no coinciden en nuestro registro';
     }
 }
