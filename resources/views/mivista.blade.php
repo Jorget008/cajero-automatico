@@ -3,8 +3,8 @@
 @section('style')
 
         html, body {
-            background-color: #fff;
-            color: #636b6f;
+            background-color: DarkTurquoise;
+            color: #ffffff;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
             height: 100vh;
@@ -36,7 +36,7 @@
         }
 
         .title {
-            font-size: 84px;
+            font-size: 70px;
         }
 
         .links > a {
@@ -59,11 +59,12 @@
 @section('content')
     <div class="content">
         <div class="title m-b-md">
-            Cajero UNISANGIL
+            Banco UNISANGIL
         </div>
 
-        <div class="links">
-            {{$mivariable}}
+        <div class="col-form-label">
+            Somos una entidad bancaria comprometida con la seguridad de las finanzas de los ciudadanos. Cree una cuenta bancaria con nosotros y
+            su dinero siempre estará seguro.
         </div>
     </div>
 @endsection

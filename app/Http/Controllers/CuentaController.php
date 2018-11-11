@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cuenta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+Use Alert;
 
 class CuentaController extends Controller
 {
@@ -21,10 +22,15 @@ class CuentaController extends Controller
         ;
 
         if(isset($misaldo->saldo)){
-            return response(["saldo"=>$misaldo->saldo,"tipocuenta"=>$misaldo->TipoCuenta->nombre,"status"=>true]);
+            //Alert::alert('Title', 'Message', 'Type');
+                //return response(["saldo"=>$misaldo->saldo,"tipocuenta"=>$misaldo->TipoCuenta->nombre,"status"=>true]);
+                return response(["title"=>$misaldo->TipoCuenta->nombre,"mensaje"=>"Dinero disponible: ".$misaldo->saldo,"type"=>"success"]);
+            //alert()->success('Title','Lorem Lorem Lorem');
+            //toast('Your Post as been submited!','success','top-right');
         }
         else{
-            return response(["saldo"=>0,"tipocuenta"=>'ninguna',"status"=>false]);
+            //return response(["saldo"=>0,"tipocuenta"=>'ninguna',"status"=>false]);
+            return response(["title"=>"Sin resultados.","mensaje"=>"Usted no posee este tipo de cuenta.","type"=>"error"]);
         }
 
     }
@@ -43,27 +49,34 @@ class CuentaController extends Controller
                 if($misaldo->saldo>=$request->valor ){
                     $misaldo->saldo=$misaldo->saldo-$request->valor;
                     $misaldo->save();
-                    return response(["saldo"=>$misaldo->saldo,"mensaje"=>'Retiro realizado correctamente',"status"=>true]);
+
+                    return response(["title"=>"Retire su dinero","mensaje"=>"Se ha retirado ".$request->valor. "peso(s). Saldo disponible: ".$misaldo->saldo,"type"=>"success"]);
+
                 }
                 else{
-                    return response(["saldo"=>$misaldo->saldo,"mensaje"=>'No cuenta con fondos suficientes en esta cuenta',"status"=>false]);
+                    return response(["title"=>"Fondos insuficientes.","mensaje"=>"No cuenta con fondos suficientes en esta cuenta.","type"=>"error"]);
+
                 }
 
 
             }
             else{
-                return response(["saldo"=>0,"mensaje"=>'Usted no cuenta con el tipo de cuenta seleccionado.',"status"=>false]);
+                return response(["title"=>"Sin resultados.","mensaje"=>"Usted no posee este tipo de cuenta.","type"=>"error"]);
+
             }
 
         }
         else{
+            if(isset($misaldo->saldo)){
             $misaldo->saldo=$misaldo->saldo+$request->valor;
             $misaldo->save();
+            return response(["title"=>"Consignación realizada.","mensaje"=>"Se ha consignado ".$request->valor. "peso(s) a su ".$misaldo->TipoCuenta->nombre,"type"=>"success"]);
+        }else{
+                return response(["title"=>"Sin resultados.","mensaje"=>"Usted no posee este tipo de cuenta.","type"=>"error"]);
+            }
         }
 
 
     }
-    public function plantilla(){
-        return view('plan');
-    }
+
 }
