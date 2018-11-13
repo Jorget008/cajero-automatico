@@ -30,7 +30,7 @@
                             <button type="button" class="btn-block btn-dark" v-on:click="retiro('2','1')">Consignar en cuenta corriente</button>
                             <button type="button" class="btn-block btn-dark" v-on:click="retiro('2','0')">Retirar de su cuenta corriente</button>
                         </div>
-                        <button type="button" class="btn-block btn-dark col-12  " v-on:click="imprimir()">Imprimir estracto de sus cuentas</button>
+                        <button type="button" class="btn-block btn-dark col-12  " v-on:click="imprimir()">Ver resumen de los movimientos de sus cuentas</button>
                     </div>
                 </div>
             </div>
