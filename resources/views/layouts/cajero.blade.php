@@ -25,9 +25,9 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
     <style>
         html, body {
-            background-color: MediumTurquoise;
+            background-image: url("images/fondo1.jpg");
 
-            color: #636b6f;
+            color: #e5f6ff;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
             height: 100vh;

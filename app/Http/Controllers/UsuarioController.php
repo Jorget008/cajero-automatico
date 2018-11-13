@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cuenta;
 use App\Http\Requests\UsuarioRequest;
 use App\Usuario;
 use Illuminate\Foundation\Auth\User;
@@ -54,6 +55,12 @@ class UsuarioController extends Controller
         $usuario->nombre=$request->nombre;
         $usuario->contrasenia= Hash::make($request->password);
         $usuario->save();
+
+        $cuenta=new Cuenta();
+        $cuenta->tipo_cuenta_id=1;
+        $cuenta->usuario_id=$usuario->id;
+        $cuenta->saldo=1000000;
+        $cuenta->save();
         $credentials = $request->only('usuario', 'password');
         if (Auth::attempt($credentials)) {
             // Authentication passed...

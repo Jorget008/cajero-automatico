@@ -14,10 +14,10 @@
                     </div>
                     <div class="card-footer">
                         <div class="btn-group-sm">
-                            <button class="btn-sm btn-success" v-on:click="movimiento('1','0')" v-if="tipocuenta==1 && tipomovimiento==0 ">Retirar</button>
-                            <button class="btn-sm btn-success" v-on:click="movimiento('2','0')" v-if="tipocuenta==2&& tipomovimiento==0">Retirar</button>
-                            <button class="btn-sm btn-success" v-on:click="movimiento('1','1')" v-if="tipocuenta==1&& tipomovimiento==1">Consignar</button>
-                            <button class="btn-sm btn-success" v-on:click="movimiento('2','1')" v-if="tipocuenta==2&& tipomovimiento==1">Consignar</button>
+                            <button class="btn-sm btn-success" data-dismiss="modal" aria-label="Close" v-on:click="movimiento('1','0')" v-if="tipocuenta==1 && tipomovimiento==0 ">Retirar</button>
+                            <button class="btn-sm btn-success" data-dismiss="modal" aria-label="Close" v-on:click="movimiento('2','0')" v-if="tipocuenta==2 && tipomovimiento==0">Retirar</button>
+                            <button class="btn-sm btn-success" data-dismiss="modal" aria-label="Close" v-on:click="movimiento('1','1')" v-if="tipocuenta==1 && tipomovimiento==1">Consignar</button>
+                            <button class="btn-sm btn-success" data-dismiss="modal" aria-label="Close" v-on:click="movimiento('2','1')" v-if="tipocuenta==2 && tipomovimiento==1">Consignar</button>
                             <button type="button" class="btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
                                 <spam  aria-hidden="true">Regresar</spam>
                             </button>

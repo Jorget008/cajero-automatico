@@ -49,14 +49,14 @@ class CuentaController extends Controller
                     $transaccion->cuenta_id=$misaldo->id;
                     $transaccion->valor=$request->valor;
                     $transaccion->save();
-                    return response(["title"=>"Retire su dinero","mensaje"=>"Se ha retirado ".$request->valor. "peso(s). Saldo disponible: ".$misaldo->saldo,"type"=>"success"]);
+                    return response(["title"=>"Retire su dinero","mensaje"=>"Se ha retirado ".$request->valor. "peso(s). Saldo disponible: ".$misaldo->saldo,"type"=>"success"],200);
                 }
                 else{
-                    return response(["title"=>"Fondos insuficientes.","mensaje"=>"No cuenta con fondos suficientes en esta cuenta.","type"=>"error"]);
+                    return response(["title"=>"Fondos insuficientes.","mensaje"=>"No cuenta con fondos suficientes en esta cuenta.","type"=>"error"],200);
                 }
             }
             else{
-               return response(["title"=>"Sin resultados.","mensaje"=>"Usted no posee este tipo de cuenta.","type"=>"error"]);
+               return response(["title"=>"Sin resultados.","mensaje"=>"Usted no posee este tipo de cuenta.","type"=>"error"],200);
             }
         }
         else{
@@ -70,9 +70,9 @@ class CuentaController extends Controller
                 $transaccion->cuenta_id=$misaldo->id;
                 $transaccion->valor=$request->valor;
                 $transaccion->save();
-            return response(["title"=>"Consignación realizada.","mensaje"=>"Se ha consignado ".$request->valor. "peso(s) a su ".$misaldo->TipoCuenta->nombre,"type"=>"success"]);
+            return response(["title"=>"Consignación realizada.","mensaje"=>"Se ha consignado ".$request->valor. "peso(s) a su ".$misaldo->TipoCuenta->nombre,"type"=>"success"],200);
         }else{
-                return response(["title"=>"Sin resultados.","mensaje"=>"Usted no posee este tipo de cuenta.","type"=>"error"]);
+                return response(["title"=>"Sin resultados.","mensaje"=>"Usted no posee este tipo de cuenta.","type"=>"error"],200);
             }
         }
     }

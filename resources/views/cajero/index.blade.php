@@ -1,8 +1,10 @@
+
 @extends('layouts.cajero')
 @section('title')Banco Unisangil @endsection
 @section('style')
     html, body {
-    background-color: MediumTurquoise;
+    background-image: url("images/fondo1.jpg");
+
 
     color: #636b6f;
     font-family: 'Nunito', sans-serif;
@@ -16,7 +18,7 @@
     <div id="cajero" class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card" style="background: rgba(255,255,255,0.2)">
 
 
                     <div class="card-body">
@@ -131,13 +133,15 @@
             },
 
             movimiento: function (tipocuenta,tipomovimiento) {
-                this.$http.post('/retiro', { tipocuenta: tipocuenta, tipomovimiento: tipomovimiento,valor:this.monto }).then(response =>{
+                this.$http.post('retiro', { tipocuenta: tipocuenta, tipomovimiento: tipomovimiento,valor:this.monto }).then(response =>{
                     this.notification(response.body.title,response.body.mensaje,response.body.type);
-                    this.respuesta= response.status;
+                  //  this.respuesta= response.body;
 
                 });
                 this.monto='';
-                $('#modal-retiro').modal('hide');
+                //this.tipocuenta="";
+                //this.tipomovimiento=0;
+              //  $('#modal-retiro').modal('hide');
             },
         },
         mounted(){

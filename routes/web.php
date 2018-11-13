@@ -11,22 +11,11 @@
 |
 */
 
-Route::get('/old', function () {
-    return view('welcome');
-});
-
-
 Auth::routes(); //ruta login, ruta resgister
-
-
-
-
 
 
 Route::post('registrarusuario', 'UsuarioController@store')->name('usuario');
 Route::resource('usuarios', 'UsuarioController');
-
-
 
 Route::group(['middleware' => 'auth'], function (){
     Route::get('/cajero', 'CuentaController@index')->name('home');
