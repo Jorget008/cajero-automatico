@@ -7,4 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaccion extends Model
 {
     //
+    public $table="transacciones";
+
+
 }

@@ -30,12 +30,14 @@
                             <button type="button" class="btn-block btn-dark" v-on:click="retiro('2','1')">Consignar en cuenta corriente</button>
                             <button type="button" class="btn-block btn-dark" v-on:click="retiro('2','0')">Retirar de su cuenta corriente</button>
                         </div>
+                        <button type="button" class="btn-block btn-dark col-12  " v-on:click="imprimir()">Imprimir estracto de sus cuentas</button>
                     </div>
                 </div>
             </div>
         </div>
 
         @include('cajero.retiro')
+        @include('cajero.estracto')
 
 
 
@@ -63,7 +65,7 @@
         data:{
             respuesta:{
                 title:'',
-                mensaje:'',
+                mensaje:[{nombre:''}],
                 type:'',
             },
 
@@ -72,16 +74,9 @@
             monto:0,
             urlCAhorros :'{{ route('saldo', ['tipocuenta' => 1])}}',
             urlCCorriente :'{{ route('saldo', ['tipocuenta' => 2])}}',
-            routeRetiroAhorro: "{{ route('retiro')}}",
-            routeRetiroCorriente: "{{ route('retiro')}}",
-            routeConsigna: "{{ route('consigna') }}",
-            routeCambioClave: "{{ route('new_clave') }}",
+            urlEstracto: "{{ route('estracto')}}",
         },
-        http:{
-            headers:{
-                'X-CSRF-Token':$('meta[name=_token]').attr('content')
-            }
-        },
+
 
         methods: {
             notification:function(title,text,type){
@@ -107,6 +102,17 @@
                 $('#modal-retiro').modal('show');
             },
 
+            imprimir: function () {
+              url=this.urlEstracto;
+                this.$http.get(url).then(response=>{
+                    this.respuesta=response.body;
+                 //   this.notification(response.body.title,response.body.mensaje,response.body.type);
+                }).catch(error=>{
+                    console.log(error);
+                });
+                $('#modal-estracto').modal('show');
+            },
+
             consultar: function (tipocuenta) {
                 if(tipocuenta==1){
                     url=this.urlCAhorros;
@@ -114,47 +120,25 @@
                     url=this.urlCCorriente;
                 }
               this.$http.get(url).then(response=>{
-//                  this.respuesta=response.body;
                   this.notification(response.body.title,response.body.mensaje,response.body.type);
                 }).catch(error=>{
                   console.log(error);
               });
-               // $('#modal-create').modal('show');
             },
+
             volverconsulta: function () {
                 $('#modal-create').modal('hide');
             },
+
             movimiento: function (tipocuenta,tipomovimiento) {
-                if(tipocuenta==1){
-                    url=this.routeRetiroAhorro;
-                }else{
-                    url=this.routeRetiroCorriente;
-                }
-
-
-                    //let list = {};
-
                 this.$http.post('/retiro', { tipocuenta: tipocuenta, tipomovimiento: tipomovimiento,valor:this.monto }).then(response =>{
                     this.notification(response.body.title,response.body.mensaje,response.body.type);
                     this.respuesta= response.status;
 
                 });
-
-
-
-                console.log('sdf');
-                console.log('sdf');
-                //this.respuesta=list;
-
-                /* this.$http.post('retiro',{parametros:tipocuenta}).then(response=>{
-                     this.respuesta=response.body;
-                 }).catch(error=>{
-                     console.log(error);
-                 });*/
                 this.monto='';
                 $('#modal-retiro').modal('hide');
             },
-
         },
         mounted(){
 

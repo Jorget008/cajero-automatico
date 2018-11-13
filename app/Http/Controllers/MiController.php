@@ -26,6 +26,6 @@ class MiController extends Controller
     }
 
     public function micajero(){
-        return view('login');
+        return view('cajero.index');
     }
 }

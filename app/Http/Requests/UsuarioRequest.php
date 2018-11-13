@@ -33,14 +33,18 @@ class UsuarioRequest extends FormRequest
     public function messages()
     {
         return [
-            'nombre.required' => 'El nombre de usuario es obligatorio',
+            'nombre.required' => 'El nombre es obligatorio',
+          //  'nombre.string' => 'El nombre de usuario es obligatorio',
+            'nombre.max' => 'El nombre no debe ser mayor a 255 caracteres',
+            'nombre.unique' => 'Este nombre ya ha sido utilizado.',
             //'email.email'  => 'El correo electrónico debe ser una dirección de correo electrónico válida',
             'usuario.max'  => 'El usuario no debe superar los 255 caracteres',
+            'usuario.required'  => 'El usuario es obligatorio.',
             'usuario.unique'  => 'El usuario ya existe en la base de datos.',
 
             'password.required'  => 'La contraseña es obligatoria',
             'password.min'  => 'La contraseña debe tener mínimo 5 caracteres',
-            'password.confirmed'  => 'Las contrasenias no coinciden',
+            'password.confirmed'  => 'Las contraseñas no coinciden',
         ];
     }
 }

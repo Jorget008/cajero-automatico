@@ -14,13 +14,15 @@ class TipoCuentaTableSeeder extends Seeder
         //
         DB::table('tipo_cuentas')->insert([
 
-            'nombre' =>"cuenta de ahorros",
+            'nombre' =>"Cuenta de ahorros",
 
         ]);
         DB::table('tipo_cuentas')->insert([
 
-            'nombre' =>"cuenta corriente",
+            'nombre' =>"Cuenta corriente",
 
         ]);
+
+
     }
 }
